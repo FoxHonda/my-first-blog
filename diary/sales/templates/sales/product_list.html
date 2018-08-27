@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block page_style_css %}
+
+{% endblock %}
+
+{% block content %}
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <div class="col-md-2">
+          &nbsp;
+        </div>
+        <div class="row">
+          <div class="col-md-8 common_center">
+            <div class="section-title">
+              <h1 class="title">Купить/продлить подписку</h1>
+            </div>     
+            <p>премиум-аккаунт оплачен до {{ vip }} </p>    
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          &nbsp;
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          &nbsp;
+        </div>
+        {% if product_list %} 
+        {% for product in product_list %}
+        {% cycle '<div class="col-md-4">' '' %}
+          <div class="post post-widget common_center">
+
+
+              <div class="section-title">
+                <h2 class="title">{{ product.name }}</h2>
+              </div>
+              <img src="{{ product.image.url }}">
+
+              <p>
+               {{ product.description }} 
+             </p>
+             <h3> {{ product.month_cost|floatformat:0 }} руб./мес.</h3>
+
+                <div class="form-group common_center">
+                    <a href="{{ product.get_absolute_url }}" class="primary-button">Купить</a>
+                </div>
+
+
+         </div>
+       {% cycle '' '</div>' %}
+       {% endfor %}
+       <div class="col-md-2">
+        &nbsp;
+      </div>
+    </div>
+    {% else %}
+    <p>Нет постов.</p>
+    {% endif %}       
+  </div>
+</div>
+
+{% endblock %}

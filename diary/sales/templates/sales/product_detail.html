@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block additional_css %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        &nbsp;
+      </div>
+      <div class="col-md-4">
+        <div class="post post-widget common_center">
+          <div class="section-title">
+            <h2 class="title">{{ product.name }}</h2>
+          </div>
+          <img src="{{ product.image.url }}">
+          <p>
+           {{ product.description }} 
+          </p>
+         <h3> {{ product.month_cost|floatformat:0 }} руб./мес.</h3>
+         <h3> Итого: {{ product.cost|floatformat:0 }} руб.</h3>
+         <form action="http://giveawation.com/" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+            <input type="hidden" name="product" value="{{ product.id }}">
+            <input type="hidden" name="pay_id_no" value="{{ pay_id_no }}">
+            <div class="form-group common_center">
+                <button class="primary-button">Купить</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4">
+      &nbsp;
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

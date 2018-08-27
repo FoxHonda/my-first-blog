@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block page_title %}Contacts{% endblock %}
+
+{% block content %}
+{% include "blog/blocks/start_block.html" %}
+    <div class="section-title">
+        <h2 class="title">{% trans "Mail us" %}</h2>
+    </div>
+    <div class="row">
+
+{% if contact_form.errors %}
+       {% for field in contact_form %}
+           {% for error in field.errors %}
+               <div class="alert alert-danger">
+                {% if field.name == 'message' %}
+                   <strong>{% trans "Сообщение должно быть" %}</strong>
+                {% elif field.name == 'email'%}
+                    <strong>{% trans "Неверный формат e-mail" %}</strong>                
+                {% elif field.name == 'name'%}
+                    <strong>{% trans "Вы можете указать имя" %}</strong>
+                {% endif %}
+               </div>
+           {% endfor %}
+       {% endfor %}
+       {% for error in contact_form.non_field_errors %}
+           <div class="alert alert-danger">
+               <strong>{{ error|escape }}</strong>
+           </div>
+       {% endfor %}
+{% endif %}
+
+    {% if contact_form %}
+        <form id="contact_form" action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input class="input" type="text" name="name" required id="id_name" placeholder="{% trans "Enter your name" %}" {% if contact_form.name.value %}value="{{ contact_form.name.value }}"{% endif %}>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input class="input" type="email" name="email" required id="id_email" placeholder="{% trans "Enter your e-mail" %}" {% if contact_form.email.value %}value="{{ contact_form.email.value }}"{% endif %}>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea class="input" name="message" cols="40" rows="10" required id="id_message" placeholder="{% trans "Message" %}">{% if contact_form.message.value %}{{ contact_form.message.value }}{% endif %}</textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group common_center">
+                    <button class="primary-button">{% trans "Отправить" %}</button>
+                </div>
+            </div>
+        </form>
+    {% else %}
+        <div class="col-md-12">
+            <div class="form-group common_center">
+                <p>{% trans "Сообщение отправлено" %}</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% include "blog/blocks/end_block.html" %}
+{% endblock %}

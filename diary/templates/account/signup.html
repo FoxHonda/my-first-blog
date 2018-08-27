@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page_title %}{% trans 'Sign up' %}{% endblock %}
+
+{% block content %}
+{% include "account/blocks/start_block.html" %}
+    <div class="section-title">
+        <h2 class="title">{% trans 'Sign up' %}</h2>
+    </div>
+
+
+    <div class="col-md-12"> 
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
+    <form id="signup_form" method="post" action="{% url "account_signup" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+        {% csrf_token %}
+        <div class="col-md-12">
+            <div class="form-group">
+                <input class="input" type="text" name="username" required id="id_username" placeholder="{% trans 'Username' %}">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <input class="input" type="email" name="email" required id="id_email" placeholder="{% trans 'Email' %}">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <input class="input" type="password" name="password" required id="id_password" placeholder="{% trans 'Password' %}">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <input class="input" type="password" name="password_confirm" required id="id_password_confirm" placeholder="{% trans 'Confirm password' %}">
+            </div>
+        </div>
+
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <div class="col-md-12">
+            <div class="form-group common_center">
+                <button class="primary-button">{% trans 'Sign up' %}</button>
+            </div>
+        </div>
+    </form>
+    <div class="col-md-12">
+        <div class="form-group common_center">
+            <small>
+                {% trans 'Already have an account?' %} <strong><a href="{% url 'account_login' %}">{% trans 'Log in' %}</a></strong>
+            </small>
+        </div>
+    </div> 
+{% include "account/blocks/end_block.html" %}
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#id_username').focus();
+    });
+</script>
+{% endblock %}

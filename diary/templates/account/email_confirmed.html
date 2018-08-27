@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block page_title %}Email confirmed{% endblock %}
+
+{% block content %}
+{% include "account/blocks/start_block.html" %}
+    <div class="section-title">
+        <h2 class="title">Email confirmed</h2>
+    </div>
+    <p>You have confirmed <b>{{ email }}</b></p>
+{% include "account/blocks/end_block.html" %}
+{% endblock %}

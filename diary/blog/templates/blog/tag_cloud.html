@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+    <div class="row">
+      {% for tag in tag_cloud %}  
+         {{ tag.name }} - {{ tag.dcount }}<br>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

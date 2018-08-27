@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+    <div class="row">
+    <h1 class="title common_style">{% trans 'Posts list by hashtag' %} #{{ search_tag }}</h1>
+
+    {% if posts_with_tag %}
+      {% for post in posts_with_tag %}
+        {% cycle '<div class="display-inline-block">' '' '' %}
+        {% include "blog/blocks/post_list_element.html" with post=post %}
+        {% cycle '' '' '</div>' %}
+      {% endfor %}
+    {% else %}
+      <p>{% trans 'No posts' %}.</p>
+    {% endif %}       
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block tagCloud %}
+
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <div class="row">
+      <div class="tagcloud01">
+        <ul>
+          {% for tag in tag_cloud %}
+          <li><a href="/t/{{tag}}">{{tag}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block page_title %}Confirm Email{% endblock %}
+
+{% block content %}
+{% include "account/blocks/start_block.html" %}
+    <div class="section-title">
+        <h2 class="title">{% trans "Confirm Email" %}</h2>
+    </div>
+    <form method="post" action="{% url "account_confirm_email" key=confirmation.key %}">
+        {% csrf_token %}
+        <p>{% blocktrans with email=confirmation.email_address.email %}Confirm email address <b>{{ email }}</b>?{% endblocktrans %}</p>
+        <button type="submit" class="btn btn-primary">{% trans "Confirm" %}</button>
+    </form>
+{% include "account/blocks/end_block.html" %}
+{% endblock %}

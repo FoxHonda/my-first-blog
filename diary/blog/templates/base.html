@@ -1,0 +1,252 @@
+
+  {% load static %}
+  {% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>{% block page_title %}Socios{% endblock %}</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+  <!-- Font Awesome Icon -->
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+  {% block additional_css %}{% endblock %}
+
+  <!-- Custom stlylesheet -->
+  <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+  {% block page_style_css %}{% endblock %}
+
+</head>
+
+<body>
+
+
+<header id="header">
+    <!-- NAV -->
+    <div id="nav">
+      <div id="nav-top">
+        <div class="container">
+          <!-- social -->
+          <ul class="nav-social">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-vk"></i></a></li>
+          </ul>
+          <!-- /social -->
+
+          <!-- logo -->
+          <div class="nav-logo">
+            <a href="{% url 'index' %}" class="logo"><img src="{% static 'img/logo.png' %}" alt=""></a>
+          </div>
+
+          <div class="nav-btns">
+            <button class="aside-btn"><i class="fa fa-bars"></i></button>
+            {% if user.is_authenticated %} 
+            <button class="search-btn"><i class="fa fa-search"></i></button>
+            {% endif %}
+            <div id="nav-search">
+              <form action="/search/" method="get">
+                <input class="input" name="q" placeholder="Search">
+              </form>
+
+              <button class="nav-close search-close">
+                <span></span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- Main Nav -->
+
+          
+
+      <div id="nav-bottom">
+        <div class="container">
+          <!-- nav -->
+          <ul class="nav-menu">
+            {% if user.is_authenticated %}    
+            <li><a href="{% url 'post_create' %}">{% trans "Add post" %}</a></li>
+            <li><a href="{% url 'posts' %}">{% trans "All posts" %}</a></li>
+            <li class="has-dropdown">
+              <a href="{% url 'account_settings' %}">{% trans "Аккаунт" %}</a>
+              <div class="dropdown">
+                <div class="dropdown-body">
+                  <ul class="dropdown-list">
+                    <li><a href="{% url 'account_settings' %}">{% trans "Settings" %}</a></li>
+                    <li><a href="{% url 'all_products' %}">{% trans "Продлить премиум" %}</a></li>
+                    <li><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            {% else %}
+            <li><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></li>
+            <li><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>            
+            {% endif %} 
+          </ul>
+          <!-- /nav -->
+        </div>
+      </div>
+      <!-- /Main Nav -->
+
+
+      <div id="nav-aside">
+        <ul class="nav-aside-menu">
+          <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'posts' %}">{% trans "All posts" %}</a></li>
+          <li><a href="{% url 'post_create' %}">{% trans "Add post" %}</a></li>    
+          <li><a href="{% url 'account_settings' %}">{% trans "Settings" %}</a></li>
+          <li><a href="{% url 'account_logout' %}">{% trans "Logout" %}</a></li>  
+
+          {% else %}
+          <li><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></li>
+          <li><a href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>
+          {% endif %}            
+        </ul>
+        <button class="nav-close nav-aside-close"><span></span></button>
+      </div>
+      <!-- /Aside Nav -->
+    </div>
+    <!-- /NAV -->
+  </header>
+  <!-- /HEADER -->
+
+
+
+  <!-- SECTION -->
+
+      <!-- row -->
+
+
+            {% block content %}
+            {% endblock %}
+  <!-- /SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <div class="row  common_style">
+            {% block pagination %}
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">{% trans "Previous" %}</a>
+                        {% endif %}
+                        <span class="page-current">
+                            {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ page_obj.paginator.num_pages }}.
+                        </span>
+                        {% if page_obj.has_next %}
+                            <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">{% trans "Next" %}</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
+          {% endblock %}
+      </div>
+    </div>
+
+  </div>
+{% block tagCloud %}
+{% endblock %}
+  <!-- /SECTION -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <div class="row">
+        {% block extra_body %}
+
+        {% endblock %}
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <footer id="footer">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="footer-widget">
+            <div class="footer-logo">
+              <a href="index.html" class="logo"><img src="{% static '/img/logo-alt.png' %}" alt=""></a>
+            </div>
+            <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+            <ul class="contact-social">
+              <li><a href="#" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="social-vk"><i class="fa fa-vk"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+
+
+
+      </div>
+      <!-- /row -->
+
+      <!-- row -->
+      <div class="footer-bottom row">
+        <div class="col-md-6 col-md-push-6">
+          <ul class="footer-nav">
+            <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
+            {% if user.is_authenticated %} 
+            <li><a href="{% url 'contact' %}">{% trans "Contact us" %}</a></li>
+            {% endif %}
+            <li><a href="{% url 'agree' %}">{% trans "Privacy" %}</a></li>
+            {% if not user.is_authenticated %}   
+            <li><form action="/i18n/setlang/" method="post">
+                  {% csrf_token %}
+                  <input name="next" type="hidden" value="{{ redirect_to }}">
+                  <select name="language">
+                      {% get_current_language as LANGUAGE_CODE %}
+                      {% get_available_languages as LANGUAGES %}
+                      {% get_language_info_list for LANGUAGES as languages %}
+                      {% for language in languages %}
+                          <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                              {{ language.name_local }} ({{ language.code }})
+                          </option>
+                      {% endfor %}
+                  </select>
+                  <input type="submit" value="{% trans "Go" %}">
+              </form></li>
+              {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-6 col-md-pull-6">
+          <div class="footer-copyright">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> {% trans "All rights reserved" %}              
+             
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </div>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </footer>
+  <!-- /FOOTER -->
+  <!-- jQuery Plugins -->
+  {% block js %} 
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  {% endblock %}
+</body>
+</html>

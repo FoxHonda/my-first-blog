@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block page_title %}Sign up{% endblock %}
+
+{% block body %}
+    <h1>This site is in private beta</h1>
+    <p>If you have signup code you can enter it below.</p>
+    <form method="get" action="">
+        <div><input type="text" name="code" placeholder="{% trans 'Your signup code...' %}" /></div>
+        <div><input type="submit" class="btn btn-primary"></div>
+    </form>
+{% endblock %}

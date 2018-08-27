@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page_title %}{% trans 'Log in' %}{% endblock %}
+
+{% block content %}
+{% include "account/blocks/start_block.html" %}
+    <div class="section-title">
+        <h2 class="title">{% trans 'Log in to an existing account' %}</h2>
+    </div>
+    <form method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+
+        {% csrf_token %}
+
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input class="input" type="email" name="email" required id="id_email" placeholder="{% trans 'Email' %}">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input class="input" type="password" name="password" required id="id_password" placeholder="{% trans 'Password' %}">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="id_remember">{% trans 'Запомнить меня' %}</label>
+                    <input  type="checkbox" name="remember" id="id_remember">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group common_center">
+                    <button class="primary-button">{% trans 'Log in' %}</button>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group common_center">
+                    <a href="{% url "account_password_reset" %}" class="btn btn-link">{% trans 'Forgot your password?' %}</a>
+                </div>
+            </div>
+            {% if ACCOUNT_OPEN_SIGNUP %}
+            <div class="col-md-12">
+                <div class="form-group common_center">
+                    <small>{% trans 'Dont have an account?' %} <strong><a href="{% url 'account_signup' %}" >{% trans 'Sign up' %}</a></strong>
+                    </small>
+                </div>
+            </div> 
+            {% endif %}
+        </div>
+    </form>
+
+{% include "account/blocks/end_block.html" %}
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#id_username').focus();
+    });
+</script>
+{% endblock %}

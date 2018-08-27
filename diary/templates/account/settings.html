@@ -1,0 +1,69 @@
+{% extends "account/base.html" %}
+  {% load static %}
+  {% load i18n %}
+
+
+{% block body_class %}account account-settings{% endblock %}
+
+{% block page_title %}Account{% endblock %}
+
+{% block content %}
+{% include "account/blocks/start_block.html" %}
+<div class="section-title">
+    <h2 class="title">{% trans 'Settings' %}</h2>
+</div>
+<form method="POST" action="{% url "account_settings" %}">
+
+    {% csrf_token %}
+
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="id_timezone">{% trans 'Timezone' %}:</label>
+            <select class="input" name="timezone" id="id_timezone">
+                {% for key in form.timezone %}
+                {{ key }}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="id_language">{% trans 'Язык' %}:</label>
+            <select class="input" name="language" id="id_language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                  {{ language.name_local }} ({{ language.code }})
+              </option>
+              {% endfor %}
+
+          </select>
+      </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+        <label for="id_email">{% trans 'Email' %}:</label>
+        <input class="input" type="email" name="email" required id="id_email" placeholder="{% trans 'Email' %}" value="{{ form.email.value }}">
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="form-group common_center">
+        <button class="primary-button">{% trans 'Сохранить пост' %}</button>
+    </div>
+</div>            
+</form>
+<div class="col-md-12">
+    <div class="form-group common_center">
+        <p class="lead"><a href="{% url 'account_password' %}">{% trans 'Change password' %}</a></p>
+    </div>
+</div>   
+<div class="col-md-12">
+    <div class="form-group common_center">
+        <p class="lead"><a href="{% url 'profile' %}">{% trans 'Profile settings' %}</a></p>
+    </div>
+</div>   
+
+{% include "account/blocks/end_block.html" %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Privacy" %}{% endblock %}
+
+{% block content %}
+{% include "blog/blocks/start_block.html" %}
+    <div class="section-title">
+        <h2 class="title">{% trans "Privacy" %}</h2>
+    </div>
+    <div class="row">
+    	{% trans "Privacy body" %}
+    </div>
+{% include "blog/blocks/end_block.html" %}
+{% endblock %}

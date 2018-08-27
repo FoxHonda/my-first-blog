@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+{% include "account/blocks/start_block.html" %}
+<div class="section-title">
+	<h2 class="title">{% trans 'Profile settings' %}</h2>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<div class="col-md-12">
+		<div class="form-group common_center">
+			{% if form.avatar.value.url|default_if_none:'clear' != 'clear'  %}  
+			<label for="id_img">{% trans 'Текущая фоновое изображение' %}:</label>
+			<img class="common_ava_height" id="id_img" src="{{ form.avatar.value.url|default_if_none:'clear' }}" alt="">
+
+			<div class="file-upload">
+				<label>
+					<input type="file" name="avatar" id="id_avatar" class="file-input-id">
+					<span>{% trans 'Выберите изображение' %}</span>
+				</label>
+			</div>
+
+			<input type="checkbox" name="avatar-clear" id="avatar-clear_id">
+			<label for="avatar-clear_id">{% trans 'Сбросить фоновую картинку' %}</label>
+			{% else %}
+			<label for="id_img">{% trans 'Текущая фоновое изображение' %}:</label><br>
+			<img class="common_ava_height" id="id_img" src="{{ form.def_img }}" alt="">
+
+			<div class="file-upload">
+				<label>
+					<input type="file" name="avatar" id="id_avatar" class="file-input-id">
+					<span>{% trans 'Выберите изображение' %}</span>
+				</label>
+			</div>
+
+			{% endif %}
+
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="form-group common_center">
+			<button class="primary-button">{% trans 'Сохранить пост' %}</button>
+		</div>
+	</div>  
+</form>
+
+
+
+
+{% include "account/blocks/end_block.html" %}
+{% endblock %}
+
+{% block js %} 
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript">
+	function previewFile() {
+		var preview = document.getElementById('id_img');
+		var file    = document.getElementById('id_avatar').files[0];
+		var reader  = new FileReader();
+
+		reader.onloadend = function () {
+			preview.src = reader.result;
+		}
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	}
+
+
+	$(document).ready( function() {
+		$("#id_avatar").change(function(){
+			previewFile()
+		});
+	});
+</script>
+{% endblock %}

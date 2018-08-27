@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% include "account/blocks/start_block.html" %}
+	<div class="section-title">
+		<h2 class="title">{% trans 'Permission denided' %}</h2>
+	</div>
+
+	<p>{% trans 'You cant do this' %}</p>
+{% include "account/blocks/end_block.html" %}
+{% endblock %}

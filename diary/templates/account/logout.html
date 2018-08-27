@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page_title %}{% trans 'Logout' %}{% endblock %}
+
+{% block content %}
+{% include "account/blocks/start_block.html" %}
+    <div class="section-title">
+        <h2 class="title">{% trans 'Logout' %}</h2>
+    </div>
+    <form method="POST" action="{% url "account_logout" %}">
+        {% csrf_token %}
+        <p>{% trans 'Are you sure you want to log out?' %}</p>
+        <div class="col-md-12">
+            <div class="form-group common_center">
+                <button class="primary-button">{% trans 'Logout' %}</button>
+            </div>
+        </div>
+    </form>
+{% include "account/blocks/end_block.html" %}
+{% endblock %}

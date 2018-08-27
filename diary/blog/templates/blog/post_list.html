@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block page_style_css %}
+
+{% endblock %}
+
+{% block content %}
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <div class="row">
+
+      <h1 class="title common_style">{% trans "All posts" %}</h1>
+
+
+      {% if post_list %}
+      {% for post in post_list %}
+      {% cycle '<div class="display-inline-block">' '' '' %}
+        {% include "blog/blocks/post_list_element.html" with post=post %}
+      {% cycle '' '' '</div>' %}
+      {% endfor %}
+      {% else %}
+      <p>Нет постов.</p>
+      {% endif %}       
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block tagCloud %}
+
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <div class="row">
+      <div class="tagcloud01">
+        <ul>
+          {% for tag in tag_cloud %}
+          <li><a href="/t/{{tag}}">{{tag}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

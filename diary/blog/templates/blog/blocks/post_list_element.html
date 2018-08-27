@@ -1,0 +1,27 @@
+{% load static %}
+<div class="col-md-4">
+  <div class="post post-sm">
+      <ul class="post-meta">
+        <li>{{post.post_date}}</li>
+      </ul> 
+
+    {% if post.postimages_set.all|first %}
+    {% with post.postimages_set.all|first as img %}
+        <a class="post-img" href="{{ post.get_absolute_url }}"><img class="common_height"src="{{ img.image.url }}" alt=""></a>
+    {% endwith %}
+    {% else %}
+      <a class="post-img" href="{{ post.get_absolute_url }}"><img class="common_height" src="{{ post.get_post_bg }}" alt=""></a>
+    {% endif %}
+
+    <div class="post-body">
+
+      <p>{{ post.text|linebreaks|slice:":155" }}</p>
+      <div class="post-category">
+        {% for tag in post.tags.names %}
+          <a href="/t/{{ tag }}">{{ tag }}</a> 
+        {% endfor %} 
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,322 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-23 17:43+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\blog\templates\base.html:79 .\blog\templates\base.html:109
+msgid "Add post"
+msgstr "Добавить запись"
+
+#: .\blog\templates\base.html:80 .\blog\templates\base.html:108
+#: .\blog\templates\blog\post_list.html:14
+msgid "All posts"
+msgstr "Мои записи"
+
+#: .\blog\templates\base.html:82
+msgid "Аккаунт"
+msgstr "Аккаунт"
+
+#: .\blog\templates\base.html:86 .\blog\templates\base.html:110
+#: .\templates\account\settings.html:13
+msgid "Settings"
+msgstr "Настройки аккаунта"
+
+#: .\blog\templates\base.html:87
+msgid "Продлить премиум"
+msgstr "Продлить премиум"
+
+#: .\blog\templates\base.html:88 .\blog\templates\base.html:111
+#: .\templates\account\logout.html:4 .\templates\account\logout.html:9
+#: .\templates\account\logout.html:16
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\blog\templates\base.html:94 .\blog\templates\base.html:114
+#: .\templates\account\login.html:49 .\templates\account\signup.html:4
+#: .\templates\account\signup.html:9 .\templates\account\signup.html:57
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: .\blog\templates\base.html:95 .\blog\templates\base.html:115
+#: .\templates\account\login.html:4 .\templates\account\login.html:38
+#: .\templates\account\signup.html:64
+msgid "Log in"
+msgstr "Войти"
+
+#: .\blog\templates\base.html:106 .\blog\templates\base.html:206
+msgid "Home"
+msgstr "Домой"
+
+#: .\blog\templates\base.html:145
+msgid "Previous"
+msgstr "пред."
+
+#: .\blog\templates\base.html:148
+msgid "Page"
+msgstr "Стр."
+
+#: .\blog\templates\base.html:148 .\blog\templates\blog\post_detail.html:119
+msgid "of"
+msgstr "из"
+
+#: .\blog\templates\base.html:151
+msgid "Next"
+msgstr "след."
+
+#: .\blog\templates\base.html:208
+msgid "Contact us"
+msgstr "Напишите нам"
+
+#: .\blog\templates\base.html:210 .\templates\agree.html:4
+#: .\templates\agree.html:9
+msgid "Privacy"
+msgstr "Пользовательское соглашение"
+
+#: .\blog\templates\base.html:225
+msgid "Go"
+msgstr "Сменить"
+
+#: .\blog\templates\base.html:233
+msgid "All rights reserved"
+msgstr "Все права защищены"
+
+#: .\blog\templates\blog\perm_denied.html:7
+msgid "Permission denided"
+msgstr "Доступ запрещен"
+
+#: .\blog\templates\blog\perm_denied.html:10
+msgid "You cant do this"
+msgstr "Вы не можете это сделать"
+
+#: .\blog\templates\blog\post_confirm_delete.html:7
+#: .\blog\templates\blog\post_detail.html:96
+msgid "Delete post"
+msgstr "Удалить"
+
+#: .\blog\templates\blog\post_confirm_delete.html:10
+msgid "Are you sure you want to delete this post?"
+msgstr "Вы действительно хотите удалить эту запись?"
+
+#: .\blog\templates\blog\post_confirm_delete.html:16
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: .\blog\templates\blog\post_detail.html:68
+msgid "VK"
+msgstr "ВКонтакте"
+
+#: .\blog\templates\blog\post_detail.html:95
+msgid "Edit post"
+msgstr "Изменить"
+
+#: .\blog\templates\blog\post_detail.html:119
+msgid "Image"
+msgstr "Изображение"
+
+#: .\blog\templates\blog\post_form.html:9
+msgid "Заголовок Добавление/редактирование поста"
+msgstr "Добавление/редактирование записи"
+
+#: .\blog\templates\blog\post_form.html:36
+msgid "Введите пост"
+msgstr "Введите текст записи"
+
+#: .\blog\templates\blog\post_form.html:45
+msgid "Описание тегов"
+msgstr ""
+"Введите метки. Не более 5 меток, разделенных запятыми или пробелами. Метка "
+"может состоять от 3 до 50 символов."
+
+#: .\blog\templates\blog\post_form.html:96
+#: .\templates\account\password_change.html:31
+#: .\templates\account\settings.html:53
+#: .\usext\templates\usext\userextends_form.html:45
+msgid "Сохранить пост"
+msgstr "Сохранить"
+
+#: .\blog\templates\blog\post_form.html:110
+msgid "Enter tags here"
+msgstr "Введите метки"
+
+#: .\blog\templates\blog\tags.html:9
+msgid "Posts list by hashtag"
+msgstr "Записи с меткой"
+
+#: .\blog\templates\blog\tags.html:18
+msgid "No posts"
+msgstr "Нет записей"
+
+#: .\templates\account\email_confirm.html:10
+msgid "Confirm Email"
+msgstr "Подтвердите эл.почту"
+
+#: .\templates\account\email_confirm.html:14
+#, python-format
+msgid "Confirm email address <b>%(email)s</b>?"
+msgstr "Подтвержить эл.почту <b>%(email)s</b>?"
+
+#: .\templates\account\email_confirm.html:15
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: .\templates\account\login.html:9
+msgid "Log in to an existing account"
+msgstr "Войти в свой аккаунт"
+
+#: .\templates\account\login.html:22 .\templates\account\password_reset.html:17
+#: .\templates\account\settings.html:47 .\templates\account\settings.html:48
+#: .\templates\account\signup.html:38
+msgid "Email"
+msgstr "Эл.почта"
+
+#: .\templates\account\login.html:27 .\templates\account\signup.html:43
+msgid "Password"
+msgstr "Пароль"
+
+#: .\templates\account\login.html:32
+msgid "Запомнить меня"
+msgstr "Запомнить меня"
+
+#: .\templates\account\login.html:43
+msgid "Forgot your password?"
+msgstr "Забыли свой пароль?"
+
+#: .\templates\account\login.html:49
+msgid "Dont have an account?"
+msgstr "Еще нет аккаунта?"
+
+#: .\templates\account\logout.html:13
+msgid "Are you sure you want to log out?"
+msgstr "Вы действительно хотите выйти?"
+
+#: .\templates\account\password_change.html:9
+#: .\templates\account\settings.html:59
+msgid "Change password"
+msgstr "Сменить пароль"
+
+#: .\templates\account\password_change.html:16
+msgid "Current password"
+msgstr "Текущий пароль"
+
+#: .\templates\account\password_change.html:21
+msgid "New password"
+msgstr "Новый пароль"
+
+#: .\templates\account\password_change.html:26
+msgid "New password again"
+msgstr "Повторите новый пароль"
+
+#: .\templates\account\password_reset.html:4
+#: .\templates\account\password_reset.html:9
+msgid "Password reset"
+msgstr "Сбросить пароль"
+
+#: .\templates\account\password_reset.html:13
+msgid "Forgotten"
+msgstr ""
+"Забыли пароль? Введите адрес Вашей электронной почты ниже, и мы отправим Вам "
+"электронное письмо, которое позволит Вам сбросить пароль."
+
+#: .\templates\account\password_reset.html:22
+msgid "Reset my password"
+msgstr "Сбросить мой пароль"
+
+#: .\templates\account\settings.html:21
+msgid "Timezone"
+msgstr "Часовой пояс"
+
+#: .\templates\account\settings.html:31
+msgid "Язык"
+msgstr "Язык"
+
+#: .\templates\account\settings.html:64
+#: .\usext\templates\usext\userextends_form.html:9
+msgid "Profile settings"
+msgstr "Настройки профиля"
+
+#: .\templates\account\signup.html:33
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: .\templates\account\signup.html:48
+msgid "Confirm password"
+msgstr "Повторите пароль"
+
+#: .\templates\account\signup.html:64
+msgid "Already have an account?"
+msgstr "Уже есть аккаунт?"
+
+#: .\templates\account\signup_closed.html:9
+msgid "Your signup code..."
+msgstr "Ваш код подтверждения"
+
+#: .\templates\agree.html:12
+msgid "Privacy body"
+msgstr "Пользовательское соглашение"
+
+#: .\templates\contacts.html:9
+msgid "Mail us"
+msgstr "Напишите нам"
+
+#: .\templates\contacts.html:18
+msgid "Сообщение должно быть"
+msgstr "Сообщение должно быть от 10 до 400 символов"
+
+#: .\templates\contacts.html:20
+msgid "Неверный формат e-mail"
+msgstr "Неверный формат эл.почты"
+
+#: .\templates\contacts.html:22
+msgid "Вы можете указать имя"
+msgstr "Вы можете указать имя, состоящее от 3 до 100 символов"
+
+#: .\templates\contacts.html:39
+msgid "Enter your name"
+msgstr "Ваше имя"
+
+#: .\templates\contacts.html:44
+msgid "Enter your e-mail"
+msgstr "Ваша эл.почта"
+
+#: .\templates\contacts.html:49
+msgid "Message"
+msgstr "Сообщение"
+
+#: .\templates\contacts.html:54
+msgid "Отправить"
+msgstr "Отправить"
+
+#: .\templates\contacts.html:61
+msgid "Сообщение отправлено"
+msgstr "Сообщение отправлено"
+
+#: .\usext\templates\usext\userextends_form.html:16
+#: .\usext\templates\usext\userextends_form.html:29
+msgid "Текущая фоновое изображение"
+msgstr "Текущая фоновое изображение"
+
+#: .\usext\templates\usext\userextends_form.html:22
+#: .\usext\templates\usext\userextends_form.html:35
+msgid "Выберите изображение"
+msgstr "Выберите изображение"
+
+#: .\usext\templates\usext\userextends_form.html:27
+msgid "Сбросить фоновую картинку"
+msgstr "Сбросить фоновую картинку"
